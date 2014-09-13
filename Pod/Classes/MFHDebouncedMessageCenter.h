@@ -12,5 +12,5 @@
 + (instancetype)sharedCenter;
 
 - (void)cancelAllEnqueuedInvocations;
-- (void)enqueueDebouncedInvocation:(NSInvocation *)invocation delay:(NSTimeInterval)delay;
+- (void)enqueueDebouncedInvocation:(NSInvocation *)invocation delay:(NSTimeInterval)delay callSiteToken:(int *)callSiteToken;
 @end

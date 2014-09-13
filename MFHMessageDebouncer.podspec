@@ -34,6 +34,9 @@ Pod::Spec.new do |s|
     #'MFHMessageDebouncer' => ['Pod/Assets/*.png']
   #}
 
+  # intentional breakage:
+  # notice that the public_header_files key is wrong
+??????  s.asdfjasdf = 2 + "foo" - String.new;^^@)(!
   s.public_header_files = 'Pod/Classes/NSObject+MFHMessageDebouncer.h'
   s.frameworks = 'Foundation'
 end

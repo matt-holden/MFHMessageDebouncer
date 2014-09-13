@@ -29,7 +29,14 @@ static char mfh_timerRefKey;
 NSString * MFHLookupIdentifierForInvocation(NSInvocation *invocation) {
     id target = invocation.target;
     IMP function = [invocation.target methodForSelector:invocation.selector];
-    return [NSString stringWithFormat:@"t:%p|IMP:%p", &target, function];
+    return [NSString stringWithFormat:@"t:%p|IMP:%p", target, function];
+}
+
+/** Utility function to construct the key will represent a specific 'call-site' invocation in
+ to a MFHDebouncedMessageCenter's _delayedMessageTimers dictionary.
+ */
+NSString * MFHLookupIdentifierForCallSiteInvocation(NSInvocation *invocation, int * callSiteToken) {
+    return [NSString stringWithFormat:@"token:%p", callSiteToken];
 }
 
 @implementation MFHDebouncedMessageCenter {
@@ -68,22 +75,28 @@ NSString * MFHLookupIdentifierForInvocation(NSInvocation *invocation) {
     });
 }
 
-- (void)enqueueDebouncedInvocation:(NSInvocation *)invocation delay:(NSTimeInterval)delay
+- (void)enqueueDebouncedInvocation:(NSInvocation *)invocation delay:(NSTimeInterval)delay callSiteToken:(int*)callSiteToken
 {
     NSThread *outerThreadRef = [NSThread currentThread];
     NSRunLoop *outerRunLoopRef = [NSRunLoop currentRunLoop];
-    NSString *lookupKey = MFHLookupIdentifierForInvocation(invocation);
+
+    NSString *lookupKey;
+    if (callSiteToken == NULL) {
+        lookupKey = MFHLookupIdentifierForInvocation(invocation);
+    }
+    else {
+        lookupKey = MFHLookupIdentifierForCallSiteInvocation(invocation, callSiteToken);
+    }
 
     dispatch_sync(_serialDictionaryMutationQueue, ^{
-        NSTimer *storedTimer = [_delayedMessageTimers objectForKey:lookupKey];
-        if (storedTimer) {
-            // The NSTimer documentation states that 'invalidate' must be run from the thread
-            // that created the timer
-            [storedTimer performSelector:@selector(invalidate) onThread:outerThreadRef withObject:nil waitUntilDone:NO];
+        NSTimer *existingTimer = [_delayedMessageTimers objectForKey:lookupKey];
+        if (existingTimer) {
+            // The NSTimer documentation states that 'invalidate' must be run from the thread that created the timer,
+            [existingTimer performSelector:@selector(invalidate) onThread:existingTimer.scheduledThread withObject:nil waitUntilDone:NO];
+            NSLog(@"Clear existing timer");
         }
 
         dispatch_async(_serialDictionaryMutationQueue, ^{
-        // Add to the queue immediately
             NSTimer *timer = [NSTimer timerWithTimeInterval:delay invocation:invocation repeats:NO];
             [timer setScheduledThread:outerThreadRef];
             [outerRunLoopRef addTimer:timer forMode:NSDefaultRunLoopMode];
@@ -91,7 +104,5 @@ NSString * MFHLookupIdentifierForInvocation(NSInvocation *invocation) {
         });
     });
 }
-
-#pragma mark 'delayedMessage' dictionary (requires thread safety)
 
 @end
