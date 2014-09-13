@@ -14,7 +14,7 @@
 		92FA7C16B72C4F849F94A1BA /* libPods-MFHMessageDebouncer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D39BE34789CC4E64AC04A3E1 /* libPods-MFHMessageDebouncer.a */; };
 		FDEE216519C42A0F00D5DDB7 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = FDEE216219C42A0F00D5DDB7 /* .gitkeep */; };
 		FDEE216D19C42A8800D5DDB7 /* MFHDebouncedMessageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEE216819C42A8800D5DDB7 /* MFHDebouncedMessageCenter.m */; };
-		FDEE216F19C42A8800D5DDB7 /* NSObject+MFHMessageDebouncer.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEE216C19C42A8800D5DDB7 /* NSObject+MFHMessageDebouncer.m */; };
+		FDEE216F19C42A8800D5DDB7 /* MFHMessageDebouncer.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEE216C19C42A8800D5DDB7 /* MFHMessageDebouncer.m */; };
 		FDEE217119C42B4200D5DDB7 /* MFHDebouncerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEE217019C42B4200D5DDB7 /* MFHDebouncerSpec.m */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +36,8 @@
 		FDEE216219C42A0F00D5DDB7 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		FDEE216719C42A8800D5DDB7 /* MFHDebouncedMessageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFHDebouncedMessageCenter.h; sourceTree = "<group>"; };
 		FDEE216819C42A8800D5DDB7 /* MFHDebouncedMessageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFHDebouncedMessageCenter.m; sourceTree = "<group>"; };
-		FDEE216B19C42A8800D5DDB7 /* NSObject+MFHMessageDebouncer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MFHMessageDebouncer.h"; sourceTree = "<group>"; };
-		FDEE216C19C42A8800D5DDB7 /* NSObject+MFHMessageDebouncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MFHMessageDebouncer.m"; sourceTree = "<group>"; };
+		FDEE216B19C42A8800D5DDB7 /* MFHMessageDebouncer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFHMessageDebouncer.h; sourceTree = "<group>"; };
+		FDEE216C19C42A8800D5DDB7 /* MFHMessageDebouncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFHMessageDebouncer.m; sourceTree = "<group>"; };
 		FDEE217019C42B4200D5DDB7 /* MFHDebouncerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFHDebouncerSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,8 +141,8 @@
 			children = (
 				FDEE216719C42A8800D5DDB7 /* MFHDebouncedMessageCenter.h */,
 				FDEE216819C42A8800D5DDB7 /* MFHDebouncedMessageCenter.m */,
-				FDEE216B19C42A8800D5DDB7 /* NSObject+MFHMessageDebouncer.h */,
-				FDEE216C19C42A8800D5DDB7 /* NSObject+MFHMessageDebouncer.m */,
+				FDEE216B19C42A8800D5DDB7 /* MFHMessageDebouncer.h */,
+				FDEE216C19C42A8800D5DDB7 /* MFHMessageDebouncer.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 			files = (
 				FDEE216D19C42A8800D5DDB7 /* MFHDebouncedMessageCenter.m in Sources */,
 				FDEE217119C42B4200D5DDB7 /* MFHDebouncerSpec.m in Sources */,
-				FDEE216F19C42A8800D5DDB7 /* NSObject+MFHMessageDebouncer.m in Sources */,
+				FDEE216F19C42A8800D5DDB7 /* MFHMessageDebouncer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
