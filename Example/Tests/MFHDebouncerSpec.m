@@ -25,6 +25,7 @@ describe(@"MFHMessageDebouncer", ^{
         [[theValue([myArray count]) should] equal:theValue(0)];
 
         [[expectFutureValue(theValue([myArray count])) shouldEventuallyBeforeTimingOutAfter(t + .1)] equal:theValue(1)];
+        [[[myArray firstObject] should] equal:@5];
 
 
     });

@@ -10,29 +10,30 @@
 Pod::Spec.new do |s|
   s.name             = "MFHMessageDebouncer"
   s.version          = "0.1.0"
-  s.summary          = "A short description of MFHMessageDebouncer."
+  s.summary          = "Message debouncing in a syntactically sweet fashion"
   s.description      = <<-DESC
-                       An optional longer description of MFHMessageDebouncer
+                       [[myObject debounceWithDelay:5] doSomething:@1];
+                       [[myObject debounceWithDelay:5] doSomething:@2];
+                       [[myObject debounceWithDelay:5] doSomething:@3];
 
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       // ^ my Object only receive the final message send in this sequence,
+                       // receiving `@3` for the `doSomething` argument.
+
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/MFHMessageDebouncer"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/matt-holden/MFHMessageDebouncer"
   s.license          = 'MIT'
   s.author           = { "Matthew Holden" => "matthew.holden@mindbodyonline.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/MFHMessageDebouncer.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/matt-holden/MFHMessageDebouncer.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/@MFHolden'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes'
-  s.resource_bundles = {
-    'MFHMessageDebouncer' => ['Pod/Assets/*.png']
-  }
+  #s.resource_bundles = {
+    #'MFHMessageDebouncer' => ['Pod/Assets/*.png']
+  #}
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.public_header_files = 'Pod/Classes/NSObject+MFHMessageDebouncer.h'
+  s.frameworks = 'Foundation'
 end
