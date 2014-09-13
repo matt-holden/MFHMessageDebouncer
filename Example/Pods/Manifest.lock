@@ -1,0 +1,17 @@
+PODS:
+  - Kiwi (2.3.0)
+  - MFHMessageDebouncer (0.1.0)
+
+DEPENDENCIES:
+  - Kiwi
+  - MFHMessageDebouncer (from `../`)
+
+EXTERNAL SOURCES:
+  MFHMessageDebouncer:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Kiwi: 54bece5b35564d9b8e03c608d926f1a22fcfc589
+  MFHMessageDebouncer: 9afcbde16b40a6d333c38a8b215f39158a2dc896
+
+COCOAPODS: 0.33.1

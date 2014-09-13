@@ -1,0 +1,6 @@
+
+target 'MFHMessageDebouncer', :exclusive => true do
+  pod "MFHMessageDebouncer", :path => "../"
+
+  pod 'Kiwi'
+end
