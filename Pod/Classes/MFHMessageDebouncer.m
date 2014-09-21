@@ -9,7 +9,8 @@
 #import "MFHMessageDebouncer.h"
 #import "MFHDebouncedMessageCenter.h"
 
-@interface MFHDebouncedMessageProxy : NSObject
+@interface MFHDebouncedMessageProxy()
+//@interface MFHDebouncedMessageProxy : NSObject
 @property (nonatomic) NSTimeInterval delay;
 @property (nonatomic) NSObject *proxiedObject;
 @property (nonatomic) MFHDebouncedMessageCenter *messageCenter;

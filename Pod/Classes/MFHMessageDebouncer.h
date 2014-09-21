@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@interface MFHDebouncedMessageProxy : NSObject
+@end
+
 @interface NSObject (MFHMessageDebouncer)
 - (instancetype)debounceWithDelay:(NSTimeInterval)delay;
 
