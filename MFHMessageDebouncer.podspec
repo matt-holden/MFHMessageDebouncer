@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
                        [[myObject debounceWithDelay:5] doSomething:@3];
 
                        // ^ my Object only receive the final message send in this sequence,
-                       // receiving `@3` for the `doSomething` argument.
+                       // receiving `@3` for the `doSomething` argument, after a 5 second delay.
 
                        DESC
   s.homepage         = "https://github.com/matt-holden/MFHMessageDebouncer"

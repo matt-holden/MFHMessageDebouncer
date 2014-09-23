@@ -14,20 +14,20 @@ You have the option of:
 
 1. Debouncing all message to an object, or 
 2. Debounce all message to *any* object originating at a specific call
-site:
+site (not yet available in Swift):
 
 ### 1:
 
 ```objc
-NSTimeInterval delayLength = 3.0;
+NSTimeInterval delayLength = 1.0;
 NSMutableArray *myArray = [NSMutableArray array];
 
 for (int i = 0; i < 3; i++) {
     [myArray addObject:@(i)];
 }
 
-// After three seconds, `myArray[0]` will return "3". 
-// The `addObject:` message will only be sent to myArray a single time.
+// One second (delayLength) later, myArray will hold a single element, the number 3.
+// The `addObject:` message was only sent to myArray a single time
 ```
 
 ### 2:  (pulled straight from the unit tests)
@@ -37,26 +37,20 @@ for (int i = 0; i < 3; i++) {
 // Make three mutable arrays
 NSArray *arrayInstances = @[[NSMutableArray new], [NSMutableArray new], [NSMutableArray new]];
 
-NSTimeInterval delay = 3.;
+NSTimeInterval delay = 1.0;
 for (int i = 0; i < 3; i++) {
   // Debounce any message sent from this specific call site, regardless
   // of the receiver or message name
   [MFHDebouncedCallSite(arrayInstances[i], delay) addObject:@(i)];
 }
 
-// Only the last object that was messaged should have received 'addObject:', after a delay of 3 seconds.
-
-
-// 3 seconds later...
+// .... one second later, 
+// Only the last object that was messaged will have received 'addObject:'
 [arrayInstances[0] count] == 0;  //true
 [arrayInstances[1] count] == 0;  //true
 [arrayInstances[2] count] == 1;  //true
+[arrayInstances[2] objectAtIndex:0] == @3;  //true
 ```
-
-
-
-
-
 
 
 ## Author
