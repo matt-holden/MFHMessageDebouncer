@@ -27,11 +27,6 @@
     [proxy setProxiedObject:object];
     [proxy setMessageCenter:[MFHDebouncedMessageCenter sharedCenter]];
 
-    if (callSiteToken != NULL) {
-        NSLog(@"USing call site token: %p", callSiteToken);
-        NSLog(@"USing call site token: %d", *callSiteToken);
-   }
-
     [proxy setCallSiteToken:callSiteToken];
     return proxy;
 }

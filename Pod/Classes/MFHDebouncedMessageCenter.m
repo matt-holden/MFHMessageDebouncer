@@ -93,7 +93,6 @@ NSString * MFHLookupIdentifierForCallSiteInvocation(NSInvocation *invocation, in
         if (existingTimer) {
             // The NSTimer documentation states that 'invalidate' must be run from the thread that created the timer,
             [existingTimer performSelector:@selector(invalidate) onThread:existingTimer.scheduledThread withObject:nil waitUntilDone:NO];
-            NSLog(@"Clear existing timer");
         }
 
         dispatch_async(_serialDictionaryMutationQueue, ^{
