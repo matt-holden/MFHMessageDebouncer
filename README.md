@@ -23,7 +23,7 @@ NSTimeInterval delayLength = 1.0;
 NSMutableArray *myArray = [NSMutableArray array];
 
 for (int i = 0; i < 3; i++) {
-    [myArray addObject:@(i)];
+    [[myArray debounceWithDelay:delayLength] addObject:@(i)];
 }
 
 // One second (delayLength) later, myArray will hold a single element, the number 3.
