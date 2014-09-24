@@ -16,7 +16,7 @@ You have the option of:
 2. Debounce all messages to *any* object originating at a specific call
 site (not yet available in Swift):
 
-### 1:
+#### 1 (most common usage):
 
 ```objc
 NSTimeInterval delayLength = 1.0;
@@ -30,7 +30,7 @@ for (int i = 0; i < 3; i++) {
 // The `addObject:` message was only sent to myArray a single time
 ```
 
-### 2:  (pulled straight from the unit tests)
+#### 2:  (pulled straight from the unit tests)
 
 ```objc
 
